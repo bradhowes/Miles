@@ -37,38 +37,21 @@ public class Sampler {
 
         let bundle = Bundle(for: Sampler.self)
         guard let url = bundle.url(forResource: voice.rawValue, withExtension: "sf2") else { fatalError("Could not load file") }
-        
+
         engine.attach(sampler)
         engine.connect(sampler, to: engine.mainMixerNode, fromBus: 0, toBus: engine.mainMixerNode.nextAvailableInputBus, format: sampler.outputFormat(forBus: 0))
-        // engine.connect(sampler, to: engine.mainMixerNode, format: nil)
 
         do {
-            try sampler.loadSoundBankInstrument(at: url, program: MidiBankType.defaultProgram,
-                                                bankMSB: voice.midiType.value, bankLSB: MidiBankType.DefaultBankLSB.value)
+            try sampler.loadSoundBankInstrument(at: url,
+                                                program: UInt8(voice.program),
+                                                bankMSB: UInt8(voice.bankMSB),
+                                                bankLSB: UInt8(voice.bankLSB))
         } catch let error as NSError {
             print("\(error.localizedDescription)")
             fatalError("Could not load file")
         }
 
         sampler.masterGain = 1.0
-    }
-
-    /// The MIDI bank types a sampler can use for the different sounds.
-    public enum MidiBankType  {
-        case Melody
-        case Percussion
-        case DefaultBankLSB
-        
-        public var value: UInt8 {
-            switch self {
-            case .Melody: return UInt8(kAUSampler_DefaultMelodicBankMSB)
-            case .Percussion: return UInt8(kAUSampler_DefaultPercussionBankMSB)
-            case .DefaultBankLSB: return UInt8(kAUSampler_DefaultBankLSB)
-            }
-        }
-        
-        public static let defaultProgram: UInt8 = 0
-        
     }
 
     public func assign(track: AVMusicTrack) {

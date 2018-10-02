@@ -8,24 +8,34 @@
 
 import AudioToolbox
 
-/// Arranges the chord's notes and inversions in a comping rythm to create the accompainment piano.
+/**
+ Arranges the chord's notes and inversions in a comping rhythm to create the accompainiment piano.
+ */
 public class ChordComper: Improviser {
+
     public weak var delegate: ImproviserDelegate?
 
-    public init() {}
-    
     public func improviseNotes(toTrack track: MusicTrack, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
         let chord = harmony.chord
         let pattern = Rhythm.Comping.pattern
         return pattern.reduce(beat) { beat, block in
             switch block {
             case .note(let dur):
-                for _ in 2...Int.random(in: 2..<chord.tones.count) { // Use at least 2 notes to render chords
-                    let note = chord.notes(atOctave: Int.random(in: 1...2), inversion: Int.random(in: 0...2)).randomElement()!
-                    note.addToTrack(track, onBeat: beat, duration: dur, velocity: Int.random(in: 30...50))
+
+                // Generate randomly-ordered set of notes for the current chord.
+                let notes = chord.notes(atOctave: Int.random(in: 1...2), inversion: Int.random(in: 0...2)).shuffled()
+
+                // Randomly pick the number of notes to sound in the chord, with the minimum being 2
+                let count = Int.random(in: 2..<notes.count)
+
+                // Add the notes at the same time position and with the same duration
+                notes[0..<count].forEach { note in
+                    note.addToTrack(track, onBeat: beat, duration: dur.value)
                     self.delegate?.addedNote(withMidiValue: note.midiValue, atBeat: beat, withDuration: dur.value)
                 }
+
                 return beat + dur.value
+
             case .rest(let dur):
                 return beat + dur.value
             }

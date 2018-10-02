@@ -46,11 +46,11 @@ public class DrumSwinger: Improviser {
     
     public func improviseNotes(toTrack track: MusicTrack, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
         parts.forEach { part in
-            _ = Rhythm.DrumBeat(part: part).pattern.reduce(MusicTimeStamp(0.0)) { partBeat, block in
-                switch block {
+            _ = Rhythm.DrumBeat(part: part).pattern.reduce(MusicTimeStamp(0.0)) { partBeat, bit in
+                switch bit {
                 case .note(let dur):
                     let realBeat = beat + partBeat
-                    Note(midi: part.midiValue).addToTrack(track, onBeat: realBeat, duration: dur, velocity: part.preferedVelocity)
+                    Note(midi: part.midiValue).addToTrack(track, onBeat: realBeat, duration: dur.value, velocity: part.preferedVelocity)
                     self.delegate?.addedNote(withMidiValue: part.midiValue, atBeat: realBeat, withDuration: dur.value)
                     return partBeat + dur.value
                 case .rest(let dur):

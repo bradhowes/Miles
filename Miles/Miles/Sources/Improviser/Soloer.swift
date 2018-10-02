@@ -36,7 +36,7 @@ public class Soloer: Improviser {
                 let realBeat = beat + internalBeat
                 let note = Note(tone: improvScale.tones(forKey: harmony.harmonization.key).randomElement()!,
                                 octave: Int.random(in: scaleRange.min...scaleRange.max))
-                note.addToTrack(track, onBeat: realBeat, duration: duration, velocity: Int.random(in: 40...60))
+                note.addToTrack(track, onBeat: realBeat, duration: duration.value, velocity: Int.random(in: 40...60))
                 self.delegate?.addedNote(withMidiValue: note.midiValue, atBeat: realBeat, withDuration: duration.value)
                 //If overlapping notes is permitted, advances a random duration, if not, advances the note's duration.
                 internalBeat += (canOverlapNotes ? durations.randomElement()! : duration).value

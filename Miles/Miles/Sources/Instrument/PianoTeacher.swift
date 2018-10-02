@@ -14,16 +14,14 @@ open class PianoTeacher: Drawable {
     private let durations: [Duration] = [.half(dotted: false), .quarter(dotted: false), .eighth(dotted: false)]
     private let engine: AVAudioEngine
     private let sequencer: Sequencer
-    private let sampler1: Sampler
-    private let sampler2: Sampler
+    private let sampler: Sampler
 
     open var canvas: MilesCanvas?
     open var draws: Bool
 
     public init(draws: Bool = true, withTempo tempo: Double) {
         self.engine = AVAudioEngine()
-        self.sampler1 = Sampler(engine: engine, for: .piano)
-        self.sampler2 = Sampler(engine: engine, for: .bass)
+        self.sampler = Sampler(engine: engine, for: .piano)
         try? engine.start()
         self.draws = draws
         self.sequencer = Sequencer(engine: engine, withTempo: tempo)
@@ -39,11 +37,11 @@ open class PianoTeacher: Drawable {
     ///   - useStaticTime: A Boolean value indicating wether or not all notes should have the same duration.
     open func play(scale: Scale, inKey key: Tone, inOctaves octaves: [Int], useStaticTime: Bool) {
         canvas?.tempo = sequencer.tempo
-        sequencer.populate(sampler: sampler1) { track in
+        sequencer.populate(sampler: sampler) { track in
             octaves.forEach { octave in
                 _ = notesForScale(scale: scale, key: key, atOctave: octave).reduce(MusicTimeStamp(0.0)) { beat, note in
                     let dur: Duration = useStaticTime ? .quarter(dotted: false) : durations.randomElement()!
-                    note.addToTrack(track, onBeat: beat, duration: dur)
+                    note.addToTrack(track, onBeat: beat, duration: dur.value)
                     canvas?.drawCircle(withSizeMiultiplier: 6, boring: useStaticTime, fades: true, delay: beat, lifespan: dur.value)
                     return beat + dur.value
                 }
@@ -64,12 +62,12 @@ open class PianoTeacher: Drawable {
     ///   - arpeggiated: A boolean value indicating wether or not the notes in the chord should be arpeggiated.
     open func playChordsIn(harmonization: Harmonization, atOctave octave: Int, arpeggiated: Bool) {
         canvas?.tempo = sequencer.tempo
-        sequencer.populate(sampler: sampler1) { track in
+        sequencer.populate(sampler: sampler) { track in
             _ = harmonization.chords.reduce(MusicTimeStamp(0.0)) { beat, chord in
                 _ = chord.notes(atOctave: octave).reduce(MusicTimeStamp(0.0)) { internalBeat, note in
                     let realBeat = beat + internalBeat
                     let dur = Duration.half(dotted: false)
-                    note.addToTrack(track, onBeat: realBeat, duration: dur)
+                    note.addToTrack(track, onBeat: realBeat, duration: dur.value)
                     canvas?.drawCircle(withSizeMiultiplier: 6, fades: true, delay: realBeat, lifespan: dur.value)
                     return internalBeat + (arpeggiated ? 0.2 : 0.0)
                 }

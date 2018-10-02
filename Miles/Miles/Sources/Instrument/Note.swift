@@ -26,21 +26,18 @@ public struct Note {
 
     public func raiseOctave() -> Note { return Note(tone: self.tone, octave: self.octave + 1) }
 
-    public func addToTrack(_ track: MusicTrack, onBeat beat: MusicTimeStamp, duration: Duration,
+    public func addToTrack(_ track: MusicTrack, onBeat beat: MusicTimeStamp, duration: Double,
                            velocity: Int = Int.random(in: 40...70)) {
-        
+
         var mess = MIDINoteMessage(channel: 0,
                                    note: UInt8(midiValue),
                                    velocity: UInt8(velocity),
                                    releaseVelocity: UInt8(10),
-                                   duration: Float(duration.value))
+                                   duration: Float(duration))
         let status = MusicTrackNewMIDINoteEvent(track, beat, &mess)
+
         if status != noErr {
             print("Error creating new midi note event \(status)")
         }
     }
 }
-
-
-
-

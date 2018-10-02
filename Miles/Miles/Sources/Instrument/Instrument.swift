@@ -6,19 +6,61 @@
 //  Copyright © 2018 Lalo Martínez. All rights reserved.
 //
 
+import AVFoundation
+
 /// An enum representing the different types an instrument can have. 
 public enum InstrumentVoice: String {
-    case piano
-    case drums
-    case bass
-    case sax
-    case trumpet
 
-    public var midiType: Sampler.MidiBankType {
-        switch self {
-        case .drums: return Sampler.MidiBankType.Percussion
-        default:  return Sampler.MidiBankType.Melody
+    case bass = "bass"
+    case drums = "drums"
+    case guitar = "GeneralUser"
+    case piano = "piano"
+    case sax = "sax"
+    case trumpet = "trumpet"
+
+    /**
+     There are two types of MIDI banks in the General MIDI standard: melody and percussion
+     */
+    public enum MidiBankType  {
+        case melody
+        case percussion
+
+        /// Obtain the most-significant byte of the bank for the program/voice
+        public var bankMSB: Int {
+            switch self {
+            case .percussion: return kAUSampler_DefaultPercussionBankMSB
+            default: return kAUSampler_DefaultMelodicBankMSB
+            }
         }
+
+        /// Obtain the least-significant byte of the bank for the program/voice
+        public var bankLSB: Int {
+            return kAUSampler_DefaultBankLSB
+        }
+    }
+
+    /// Obtain the MIDI bank type for the voice
+    public var midiBankType: MidiBankType {
+        switch self {
+        case .drums: return .percussion
+        default: return .melody
+        }
+    }
+
+    /// Obtain the program to select when performing
+    public var program: Int {
+        switch self {
+        case .guitar: return 26
+        default: return 0
+        }
+    }
+
+    public var bankMSB: Int {
+        return midiBankType.bankMSB
+    }
+
+    public var bankLSB: Int {
+        return midiBankType.bankLSB
     }
 }
 

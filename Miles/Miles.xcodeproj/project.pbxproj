@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BD502EE12162C74C0096CBED /* WiringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD502EE02162C74C0096CBED /* WiringTests.swift */; };
+		BD69986A2163D30D00A48753 /* Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6998692163D30D00A48753 /* Guitar.swift */; };
+		BD69986E2163D83800A48753 /* GeneralUser.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = BD69986D2163D83800A48753 /* GeneralUser.sf2 */; };
 		BD9DB05C2161FA06009E51AE /* Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9DB05B2161FA06009E51AE /* Sequencer.swift */; };
 		BDC5BE0B215E85B8000AF209 /* Miles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC5BE01215E85B8000AF209 /* Miles.framework */; };
 		BDC5BE10215E85B8000AF209 /* MilesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE0F215E85B8000AF209 /* MilesTests.swift */; };
@@ -60,6 +62,8 @@
 
 /* Begin PBXFileReference section */
 		BD502EE02162C74C0096CBED /* WiringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiringTests.swift; sourceTree = "<group>"; };
+		BD6998692163D30D00A48753 /* Guitar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guitar.swift; sourceTree = "<group>"; };
+		BD69986D2163D83800A48753 /* GeneralUser.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = GeneralUser.sf2; sourceTree = "<group>"; };
 		BD9DB05B2161FA06009E51AE /* Sequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequencer.swift; sourceTree = "<group>"; };
 		BDC5BE01215E85B8000AF209 /* Miles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Miles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC5BE04215E85B8000AF209 /* Miles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Miles.h; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			children = (
 				BDC5BE1E215E86A3000AF209 /* Bass.swift */,
 				BDC5BE22215E86A3000AF209 /* Drums.swift */,
+				BD6998692163D30D00A48753 /* Guitar.swift */,
 				BDC5BE20215E86A3000AF209 /* Instrument.swift */,
 				BDC5BE38215E86A3000AF209 /* Note.swift */,
 				BDC5BE23215E86A3000AF209 /* Piano.swift */,
@@ -238,6 +243,7 @@
 		BDC5BE3C215E86A3000AF209 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BD69986D2163D83800A48753 /* GeneralUser.sf2 */,
 				BDC5BE3D215E86A3000AF209 /* block2.png */,
 				BDC5BE3E215E86A3000AF209 /* block3.png */,
 				BDC5BE3F215E86A3000AF209 /* block1.png */,
@@ -348,6 +354,7 @@
 				BDC5BE63215E86A3000AF209 /* piano.sf2 in Resources */,
 				BDC5BE61215E86A3000AF209 /* block3.png in Resources */,
 				BDC5BE66215E86A3000AF209 /* circle.png in Resources */,
+				BD69986E2163D83800A48753 /* GeneralUser.sf2 in Resources */,
 				BDC5BE62215E86A3000AF209 /* block1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +381,7 @@
 				BDC5BE5A215E86A3000AF209 /* DrumSwinger.swift in Sources */,
 				BDC5BE50215E86A3000AF209 /* Chord.swift in Sources */,
 				BDC5BE51215E86A3000AF209 /* Duration.swift in Sources */,
+				BD69986A2163D30D00A48753 /* Guitar.swift in Sources */,
 				BDC5BE4D215E86A3000AF209 /* Harmonization.swift in Sources */,
 				BDC5BE5F215E86A3000AF209 /* Rhythm.swift in Sources */,
 				BDC5BE46215E86A3000AF209 /* Bass.swift in Sources */,

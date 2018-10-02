@@ -38,7 +38,7 @@ class WiringTests: XCTestCase {
             octaves.forEach { octave in
                 _ = notesForScale(scale: scale, key: inKey, atOctave: octave).reduce(MusicTimeStamp(0.0)) { beat, note in
                     let dur: Duration = .quarter(dotted: false)
-                    note.addToTrack(track, onBeat: beat, duration: dur)
+                    note.addToTrack(track, onBeat: beat, duration: dur.value)
                     return beat + dur.value
                 }
             }

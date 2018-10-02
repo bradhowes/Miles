@@ -89,4 +89,3 @@ public struct Chord: CustomStringConvertible {
         return "\(self.root)\(self.quality.rawValue)"
     }
 }
-

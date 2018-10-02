@@ -21,10 +21,11 @@ import AVFoundation
 import Miles
 
 let engine = AVAudioEngine()
-let drums = Drums(engine: engine, withParts: [.ride, .hihats, .snare, .bass], draws: false)
 let bass = Bass(engine: engine, volume: 1, draws: true)
+let drums = Drums(engine: engine, withParts: [.ride, .hihats, .snare, .bass], draws: false)
+let guitar = Guitar(engine: engine, for: .solo, volume: 0.75, draws: true)
 let piano = Piano(engine: engine, for: .comping, volume: 0.8, draws: true)
-let pianoSoloer = Piano(engine: engine, for: .soloing, volume: 0.6, draws: true)
+// let pianoSoloer = Piano(engine: engine, for: .soloing, volume: 0.6, draws: true)
 /*:
  ---
  ## Then, we decide which key the musicians will play in.
@@ -49,7 +50,7 @@ let harmonization = Harmonization(key: .Eflat, type: .harmonicMinor)
  
  Cool, huh?
  */
-let sequence = Sequence(engine: engine, harmonization: harmonization, tempo: 120, withInstruments: [drums, bass, piano, pianoSoloer])
+let sequence = Sequence(engine: engine, harmonization: harmonization, tempo: 120, withInstruments: [bass, drums, guitar, piano])
 /*:
  ---
  ## Now, we create a canvas
