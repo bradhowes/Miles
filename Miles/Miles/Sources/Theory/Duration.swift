@@ -1,0 +1,36 @@
+//
+//  Duration.swift
+//  Miles
+//
+//  Created by Lalo Martínez on 3/22/18.
+//  Copyright © 2018 Lalo Martínez. All rights reserved.
+//
+
+public enum Duration {
+    case whole(dotted: Bool)
+    case half(dotted: Bool)
+    case quarter(dotted: Bool)
+    case eighth(dotted: Bool)
+    case sixteenth(dotted: Bool)
+    case thirtySecond(dotted: Bool)
+    case sixtyFourth(dotted: Bool)
+    case eightTriplet(thirds: Double)
+
+    /// The value (in beats) for the specified duration.
+    public var value: Double {
+        switch self {
+        case .whole(let dotted): return calculateValue(duration: 4, dotted: dotted) // Semibreve
+        case .half(let dotted): return calculateValue(duration: 2, dotted: dotted)  // Minim
+        case .quarter(let dotted): return calculateValue(duration: 1, dotted: dotted) // Crotchet
+        case .eighth(let dotted): return calculateValue(duration: 0.5, dotted: dotted)  // Quaver
+        case .sixteenth(let dotted): return calculateValue(duration: 0.25, dotted: dotted) // Semiquaver
+        case .thirtySecond(let dotted): return calculateValue(duration: 0.125, dotted: dotted) // Demisemiquaver
+        case .sixtyFourth(let dotted): return calculateValue(duration: 0.0625, dotted: dotted) // Hemidemisemiquaver
+        case .eightTriplet(thirds: let t): return t * (1/3) //Eighth note triplet
+        }
+    }
+    
+    private func calculateValue(duration: Double, dotted: Bool) -> Double {
+        return dotted ? duration * 1.5 : duration
+    }
+}

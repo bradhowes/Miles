@@ -1,13 +1,17 @@
 //: ![I could not resist designing a logo](miles_logo.pdf)
+//: ## [Previous](@previous) | [Next](@next)
+
 import PlaygroundSupport
 import SpriteKit
+import Miles
+
 PlaygroundPage.current.needsIndefiniteExecution = true
 let view = SKView(frame: CGRect(x: 0, y: 0, width: 800, height: 500))
 PlaygroundPage.current.liveView = view
 
 // Creates the canvas
 let canvas = MilesCanvas()
-canvas.colorPalette = NSColor.purpleRain
+canvas.colorPalette = UIColor.purpleRain
 canvas.scaleMode = .resizeFill
 view.presentScene(canvas)
 /*:
@@ -21,13 +25,15 @@ view.presentScene(canvas)
  
  ---
  */
+
 let harmonization = Harmonization(key: .Eflat, type: .harmonicMinor)
-/*:
- ▶️ Run the playground now to make our teacher play the harmonization */
-let teacher = PianoTeacher()
+let teacher = PianoTeacher(withTempo: 100)
 teacher.canvas = canvas
- teacher.playChordsIn(harmonization: harmonization, atOctave: 2, withTempo: 100, arpeggiated: false)
+teacher.playChordsIn(harmonization: harmonization, atOctave: 2, arpeggiated: false)
+
 /*:
+ ▶️ Run the playground now to make our teacher play the harmonization
+
  Interesting, right?
  
  + Experiment:
@@ -38,5 +44,5 @@ teacher.canvas = canvas
  
  ---
  
-  ## [Previous](@previous) | [Next](@next)
+ ## [Previous](@previous) | [Next](@next)
  */

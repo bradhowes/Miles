@@ -1,4 +1,5 @@
 //: ![I could not resist designing a logo](miles_logo.pdf)
+//: ## [Next](@next)
 /*:
  ##### The jazz improviser playground.
  In my opinion, one of the most amazing things of jazz is that it relies on improvisation. Musicians play whatever they can come up with in the moment, and maybe they are never able to play that again. It's amazing.
@@ -10,35 +11,41 @@
  ---
  
  * Important:
-Xcode sometimes fails to load the source files. If there's an error, just run the Playground again. 😳
+ Xcode sometimes fails to load the source files. If there's an error, just run the Playground again. 😳
+ ---
+
+ First, we'll create a view to display our music.
  */
-//First, we'll create a view to display our music.
+
 import PlaygroundSupport
 import SpriteKit
+import Miles
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 let view = SKView(frame: CGRect(x: 0, y: 0, width: 800, height: 500))
 PlaygroundPage.current.liveView = view
+
 // Creates the canvas
 let canvas = MilesCanvas()
-canvas.colorPalette = NSColor.ramboSunshine
+canvas.colorPalette = UIColor.ramboSunshine
 canvas.scaleMode = .resizeFill
 view.presentScene(canvas)
+
 /*:
  ## The basics: Scales
  
  A **scale** is set of musical notes that are based on a fundamental pitch or tone. Jazz and music in general rely on scales to create songs and melodies with notes that sound good with each other.
  
-  ▶️**Run** the playground to make the teacher play a scale.
+ ▶️**Run** the playground to make the teacher play a scale.
  
  * Experiment:
  Modify the arguments in the `play` method to listen to other types of scales.
  
- Can you see how some scales feel different than others? 
+ Can you see how some scales feel different than others?
  */
-let pianoTeacher = PianoTeacher()
+let pianoTeacher = PianoTeacher(withTempo: 150)
 pianoTeacher.canvas = canvas
-pianoTeacher.play(scale: .blues, inKey: .Eflat, inOctaves: [2,3,4], withTempo: 150, useStaticTime: true)
+pianoTeacher.play(scale: .blues, inKey: .Eflat, inOctaves: [2,3,4], useStaticTime: true)
 /*:
  ---
  
@@ -47,7 +54,7 @@ pianoTeacher.play(scale: .blues, inKey: .Eflat, inOctaves: [2,3,4], withTempo: 1
  * Experiment:
  Go back to our music teacher's `play` method and change the argument `useStaticTime` to `false`. Now the notes in the scale have a different time value.
  
-Cool right?
+ Cool right?
  
  ---
  

@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD502EE12162C74C0096CBED /* WiringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD502EE02162C74C0096CBED /* WiringTests.swift */; };
+		BD9DB05C2161FA06009E51AE /* Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9DB05B2161FA06009E51AE /* Sequencer.swift */; };
+		BDC5BE0B215E85B8000AF209 /* Miles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC5BE01215E85B8000AF209 /* Miles.framework */; };
+		BDC5BE10215E85B8000AF209 /* MilesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE0F215E85B8000AF209 /* MilesTests.swift */; };
+		BDC5BE12215E85B8000AF209 /* Miles.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC5BE04215E85B8000AF209 /* Miles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDC5BE46215E86A3000AF209 /* Bass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE1E215E86A3000AF209 /* Bass.swift */; };
+		BDC5BE48215E86A3000AF209 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE20215E86A3000AF209 /* Instrument.swift */; };
+		BDC5BE49215E86A3000AF209 /* PianoTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE21215E86A3000AF209 /* PianoTeacher.swift */; };
+		BDC5BE4A215E86A3000AF209 /* Drums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE22215E86A3000AF209 /* Drums.swift */; };
+		BDC5BE4B215E86A3000AF209 /* Piano.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE23215E86A3000AF209 /* Piano.swift */; };
+		BDC5BE4C215E86A3000AF209 /* Sampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE24215E86A3000AF209 /* Sampler.swift */; };
+		BDC5BE4D215E86A3000AF209 /* Harmonization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE26215E86A3000AF209 /* Harmonization.swift */; };
+		BDC5BE4E215E86A3000AF209 /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE27215E86A3000AF209 /* Tone.swift */; };
+		BDC5BE4F215E86A3000AF209 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE28215E86A3000AF209 /* Interval.swift */; };
+		BDC5BE50215E86A3000AF209 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE29215E86A3000AF209 /* Chord.swift */; };
+		BDC5BE51215E86A3000AF209 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE2A215E86A3000AF209 /* Duration.swift */; };
+		BDC5BE52215E86A3000AF209 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE2B215E86A3000AF209 /* Scale.swift */; };
+		BDC5BE53215E86A3000AF209 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE2C215E86A3000AF209 /* Sequence.swift */; };
+		BDC5BE54215E86A3000AF209 /* MilesCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE2E215E86A3000AF209 /* MilesCanvas.swift */; };
+		BDC5BE55215E86A3000AF209 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE2F215E86A3000AF209 /* Drawable.swift */; };
+		BDC5BE57215E86A3000AF209 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE32215E86A3000AF209 /* UIColorExtensions.swift */; };
+		BDC5BE59215E86A3000AF209 /* ChordComper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE35215E86A3000AF209 /* ChordComper.swift */; };
+		BDC5BE5A215E86A3000AF209 /* DrumSwinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE36215E86A3000AF209 /* DrumSwinger.swift */; };
+		BDC5BE5B215E86A3000AF209 /* Bassliner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE37215E86A3000AF209 /* Bassliner.swift */; };
+		BDC5BE5C215E86A3000AF209 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE38215E86A3000AF209 /* Note.swift */; };
+		BDC5BE5D215E86A3000AF209 /* Improviser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE39215E86A3000AF209 /* Improviser.swift */; };
+		BDC5BE5E215E86A3000AF209 /* Soloer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE3A215E86A3000AF209 /* Soloer.swift */; };
+		BDC5BE5F215E86A3000AF209 /* Rhythm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE3B215E86A3000AF209 /* Rhythm.swift */; };
+		BDC5BE60215E86A3000AF209 /* block2.png in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE3D215E86A3000AF209 /* block2.png */; };
+		BDC5BE61215E86A3000AF209 /* block3.png in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE3E215E86A3000AF209 /* block3.png */; };
+		BDC5BE62215E86A3000AF209 /* block1.png in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE3F215E86A3000AF209 /* block1.png */; };
+		BDC5BE63215E86A3000AF209 /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE40215E86A3000AF209 /* piano.sf2 */; };
+		BDC5BE64215E86A3000AF209 /* drums.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE41215E86A3000AF209 /* drums.sf2 */; };
+		BDC5BE66215E86A3000AF209 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE43215E86A3000AF209 /* circle.png */; };
+		BDC5BE67215E86A3000AF209 /* bass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE44215E86A3000AF209 /* bass.sf2 */; };
+		BDC5BE68215E86A3000AF209 /* string.png in Resources */ = {isa = PBXBuildFile; fileRef = BDC5BE45215E86A3000AF209 /* string.png */; };
+		BDC5BE6A215E8CDF000AF209 /* ToneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE69215E8CDF000AF209 /* ToneTests.swift */; };
+		BDC5BE6C215E9455000AF209 /* DurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE6B215E9455000AF209 /* DurationTests.swift */; };
+		BDC5BE70215E965D000AF209 /* ScaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE6F215E965D000AF209 /* ScaleTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDC5BE0C215E85B8000AF209 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDC5BDF8215E85B8000AF209 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDC5BE00215E85B8000AF209;
+			remoteInfo = Miles;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD502EE02162C74C0096CBED /* WiringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiringTests.swift; sourceTree = "<group>"; };
+		BD9DB05B2161FA06009E51AE /* Sequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequencer.swift; sourceTree = "<group>"; };
+		BDC5BE01215E85B8000AF209 /* Miles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Miles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC5BE04215E85B8000AF209 /* Miles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Miles.h; sourceTree = "<group>"; };
+		BDC5BE05215E85B8000AF209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDC5BE0A215E85B8000AF209 /* MilesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC5BE0F215E85B8000AF209 /* MilesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilesTests.swift; sourceTree = "<group>"; };
+		BDC5BE11215E85B8000AF209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDC5BE1E215E86A3000AF209 /* Bass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bass.swift; sourceTree = "<group>"; };
+		BDC5BE20215E86A3000AF209 /* Instrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
+		BDC5BE21215E86A3000AF209 /* PianoTeacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoTeacher.swift; sourceTree = "<group>"; };
+		BDC5BE22215E86A3000AF209 /* Drums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drums.swift; sourceTree = "<group>"; };
+		BDC5BE23215E86A3000AF209 /* Piano.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piano.swift; sourceTree = "<group>"; };
+		BDC5BE24215E86A3000AF209 /* Sampler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sampler.swift; sourceTree = "<group>"; };
+		BDC5BE26215E86A3000AF209 /* Harmonization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Harmonization.swift; sourceTree = "<group>"; };
+		BDC5BE27215E86A3000AF209 /* Tone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
+		BDC5BE28215E86A3000AF209 /* Interval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
+		BDC5BE29215E86A3000AF209 /* Chord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
+		BDC5BE2A215E86A3000AF209 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		BDC5BE2B215E86A3000AF209 /* Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
+		BDC5BE2C215E86A3000AF209 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		BDC5BE2E215E86A3000AF209 /* MilesCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilesCanvas.swift; sourceTree = "<group>"; };
+		BDC5BE2F215E86A3000AF209 /* Drawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
+		BDC5BE32215E86A3000AF209 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		BDC5BE35215E86A3000AF209 /* ChordComper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordComper.swift; sourceTree = "<group>"; };
+		BDC5BE36215E86A3000AF209 /* DrumSwinger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumSwinger.swift; sourceTree = "<group>"; };
+		BDC5BE37215E86A3000AF209 /* Bassliner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bassliner.swift; sourceTree = "<group>"; };
+		BDC5BE38215E86A3000AF209 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		BDC5BE39215E86A3000AF209 /* Improviser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Improviser.swift; sourceTree = "<group>"; };
+		BDC5BE3A215E86A3000AF209 /* Soloer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soloer.swift; sourceTree = "<group>"; };
+		BDC5BE3B215E86A3000AF209 /* Rhythm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rhythm.swift; sourceTree = "<group>"; };
+		BDC5BE3D215E86A3000AF209 /* block2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block2.png; sourceTree = "<group>"; };
+		BDC5BE3E215E86A3000AF209 /* block3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block3.png; sourceTree = "<group>"; };
+		BDC5BE3F215E86A3000AF209 /* block1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block1.png; sourceTree = "<group>"; };
+		BDC5BE40215E86A3000AF209 /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
+		BDC5BE41215E86A3000AF209 /* drums.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.sf2; sourceTree = "<group>"; };
+		BDC5BE43215E86A3000AF209 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		BDC5BE44215E86A3000AF209 /* bass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass.sf2; sourceTree = "<group>"; };
+		BDC5BE45215E86A3000AF209 /* string.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = string.png; sourceTree = "<group>"; };
+		BDC5BE69215E8CDF000AF209 /* ToneTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToneTests.swift; sourceTree = "<group>"; };
+		BDC5BE6B215E9455000AF209 /* DurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTests.swift; sourceTree = "<group>"; };
+		BDC5BE6F215E965D000AF209 /* ScaleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDC5BDFE215E85B8000AF209 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDC5BE07215E85B8000AF209 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDC5BE0B215E85B8000AF209 /* Miles.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BDC5BDF7215E85B8000AF209 = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE03215E85B8000AF209 /* Miles */,
+				BDC5BE0E215E85B8000AF209 /* MilesTests */,
+				BDC5BE02215E85B8000AF209 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BDC5BE02215E85B8000AF209 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE01215E85B8000AF209 /* Miles.framework */,
+				BDC5BE0A215E85B8000AF209 /* MilesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDC5BE03215E85B8000AF209 /* Miles */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE3C215E86A3000AF209 /* Resources */,
+				BDC5BE1C215E86A3000AF209 /* Sources */,
+				BDC5BE04215E85B8000AF209 /* Miles.h */,
+				BDC5BE05215E85B8000AF209 /* Info.plist */,
+			);
+			path = Miles;
+			sourceTree = "<group>";
+		};
+		BDC5BE0E215E85B8000AF209 /* MilesTests */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE0F215E85B8000AF209 /* MilesTests.swift */,
+				BDC5BE69215E8CDF000AF209 /* ToneTests.swift */,
+				BDC5BE6B215E9455000AF209 /* DurationTests.swift */,
+				BDC5BE6F215E965D000AF209 /* ScaleTests.swift */,
+				BD502EE02162C74C0096CBED /* WiringTests.swift */,
+				BDC5BE11215E85B8000AF209 /* Info.plist */,
+			);
+			path = MilesTests;
+			sourceTree = "<group>";
+		};
+		BDC5BE1C215E86A3000AF209 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE1D215E86A3000AF209 /* Instrument */,
+				BDC5BE25215E86A3000AF209 /* Theory */,
+				BDC5BE2D215E86A3000AF209 /* Canvas */,
+				BDC5BE30215E86A3000AF209 /* Extensions */,
+				BDC5BE34215E86A3000AF209 /* Improviser */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		BDC5BE1D215E86A3000AF209 /* Instrument */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE1E215E86A3000AF209 /* Bass.swift */,
+				BDC5BE22215E86A3000AF209 /* Drums.swift */,
+				BDC5BE20215E86A3000AF209 /* Instrument.swift */,
+				BDC5BE38215E86A3000AF209 /* Note.swift */,
+				BDC5BE23215E86A3000AF209 /* Piano.swift */,
+				BDC5BE21215E86A3000AF209 /* PianoTeacher.swift */,
+				BDC5BE24215E86A3000AF209 /* Sampler.swift */,
+				BD9DB05B2161FA06009E51AE /* Sequencer.swift */,
+			);
+			path = Instrument;
+			sourceTree = "<group>";
+		};
+		BDC5BE25215E86A3000AF209 /* Theory */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE29215E86A3000AF209 /* Chord.swift */,
+				BDC5BE2A215E86A3000AF209 /* Duration.swift */,
+				BDC5BE26215E86A3000AF209 /* Harmonization.swift */,
+				BDC5BE28215E86A3000AF209 /* Interval.swift */,
+				BDC5BE2B215E86A3000AF209 /* Scale.swift */,
+				BDC5BE27215E86A3000AF209 /* Tone.swift */,
+			);
+			path = Theory;
+			sourceTree = "<group>";
+		};
+		BDC5BE2D215E86A3000AF209 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE2F215E86A3000AF209 /* Drawable.swift */,
+				BDC5BE2E215E86A3000AF209 /* MilesCanvas.swift */,
+			);
+			path = Canvas;
+			sourceTree = "<group>";
+		};
+		BDC5BE30215E86A3000AF209 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE32215E86A3000AF209 /* UIColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BDC5BE34215E86A3000AF209 /* Improviser */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE37215E86A3000AF209 /* Bassliner.swift */,
+				BDC5BE35215E86A3000AF209 /* ChordComper.swift */,
+				BDC5BE36215E86A3000AF209 /* DrumSwinger.swift */,
+				BDC5BE39215E86A3000AF209 /* Improviser.swift */,
+				BDC5BE3B215E86A3000AF209 /* Rhythm.swift */,
+				BDC5BE2C215E86A3000AF209 /* Sequence.swift */,
+				BDC5BE3A215E86A3000AF209 /* Soloer.swift */,
+			);
+			path = Improviser;
+			sourceTree = "<group>";
+		};
+		BDC5BE3C215E86A3000AF209 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BDC5BE3D215E86A3000AF209 /* block2.png */,
+				BDC5BE3E215E86A3000AF209 /* block3.png */,
+				BDC5BE3F215E86A3000AF209 /* block1.png */,
+				BDC5BE43215E86A3000AF209 /* circle.png */,
+				BDC5BE45215E86A3000AF209 /* string.png */,
+				BDC5BE44215E86A3000AF209 /* bass.sf2 */,
+				BDC5BE41215E86A3000AF209 /* drums.sf2 */,
+				BDC5BE40215E86A3000AF209 /* piano.sf2 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BDC5BDFC215E85B8000AF209 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDC5BE12215E85B8000AF209 /* Miles.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BDC5BE00215E85B8000AF209 /* Miles */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDC5BE15215E85B8000AF209 /* Build configuration list for PBXNativeTarget "Miles" */;
+			buildPhases = (
+				BDC5BDFC215E85B8000AF209 /* Headers */,
+				BDC5BDFD215E85B8000AF209 /* Sources */,
+				BDC5BDFE215E85B8000AF209 /* Frameworks */,
+				BDC5BDFF215E85B8000AF209 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Miles;
+			productName = Miles;
+			productReference = BDC5BE01215E85B8000AF209 /* Miles.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BDC5BE09215E85B8000AF209 /* MilesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDC5BE18215E85B8000AF209 /* Build configuration list for PBXNativeTarget "MilesTests" */;
+			buildPhases = (
+				BDC5BE06215E85B8000AF209 /* Sources */,
+				BDC5BE07215E85B8000AF209 /* Frameworks */,
+				BDC5BE08215E85B8000AF209 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BDC5BE0D215E85B8000AF209 /* PBXTargetDependency */,
+			);
+			name = MilesTests;
+			productName = MilesTests;
+			productReference = BDC5BE0A215E85B8000AF209 /* MilesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDC5BDF8215E85B8000AF209 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Brad Howes";
+				TargetAttributes = {
+					BDC5BE00215E85B8000AF209 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					BDC5BE09215E85B8000AF209 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = BDC5BDFB215E85B8000AF209 /* Build configuration list for PBXProject "Miles" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BDC5BDF7215E85B8000AF209;
+			productRefGroup = BDC5BE02215E85B8000AF209 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDC5BE00215E85B8000AF209 /* Miles */,
+				BDC5BE09215E85B8000AF209 /* MilesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDC5BDFF215E85B8000AF209 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDC5BE68215E86A3000AF209 /* string.png in Resources */,
+				BDC5BE60215E86A3000AF209 /* block2.png in Resources */,
+				BDC5BE64215E86A3000AF209 /* drums.sf2 in Resources */,
+				BDC5BE67215E86A3000AF209 /* bass.sf2 in Resources */,
+				BDC5BE63215E86A3000AF209 /* piano.sf2 in Resources */,
+				BDC5BE61215E86A3000AF209 /* block3.png in Resources */,
+				BDC5BE66215E86A3000AF209 /* circle.png in Resources */,
+				BDC5BE62215E86A3000AF209 /* block1.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDC5BE08215E85B8000AF209 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDC5BDFD215E85B8000AF209 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDC5BE4F215E86A3000AF209 /* Interval.swift in Sources */,
+				BDC5BE49215E86A3000AF209 /* PianoTeacher.swift in Sources */,
+				BDC5BE5C215E86A3000AF209 /* Note.swift in Sources */,
+				BDC5BE53215E86A3000AF209 /* Sequence.swift in Sources */,
+				BDC5BE5B215E86A3000AF209 /* Bassliner.swift in Sources */,
+				BDC5BE5A215E86A3000AF209 /* DrumSwinger.swift in Sources */,
+				BDC5BE50215E86A3000AF209 /* Chord.swift in Sources */,
+				BDC5BE51215E86A3000AF209 /* Duration.swift in Sources */,
+				BDC5BE4D215E86A3000AF209 /* Harmonization.swift in Sources */,
+				BDC5BE5F215E86A3000AF209 /* Rhythm.swift in Sources */,
+				BDC5BE46215E86A3000AF209 /* Bass.swift in Sources */,
+				BDC5BE52215E86A3000AF209 /* Scale.swift in Sources */,
+				BDC5BE5E215E86A3000AF209 /* Soloer.swift in Sources */,
+				BD9DB05C2161FA06009E51AE /* Sequencer.swift in Sources */,
+				BDC5BE57215E86A3000AF209 /* UIColorExtensions.swift in Sources */,
+				BDC5BE48215E86A3000AF209 /* Instrument.swift in Sources */,
+				BDC5BE4A215E86A3000AF209 /* Drums.swift in Sources */,
+				BDC5BE4C215E86A3000AF209 /* Sampler.swift in Sources */,
+				BDC5BE59215E86A3000AF209 /* ChordComper.swift in Sources */,
+				BDC5BE55215E86A3000AF209 /* Drawable.swift in Sources */,
+				BDC5BE5D215E86A3000AF209 /* Improviser.swift in Sources */,
+				BDC5BE4E215E86A3000AF209 /* Tone.swift in Sources */,
+				BDC5BE54215E86A3000AF209 /* MilesCanvas.swift in Sources */,
+				BDC5BE4B215E86A3000AF209 /* Piano.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDC5BE06215E85B8000AF209 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDC5BE6C215E9455000AF209 /* DurationTests.swift in Sources */,
+				BD502EE12162C74C0096CBED /* WiringTests.swift in Sources */,
+				BDC5BE10215E85B8000AF209 /* MilesTests.swift in Sources */,
+				BDC5BE70215E965D000AF209 /* ScaleTests.swift in Sources */,
+				BDC5BE6A215E8CDF000AF209 /* ToneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BDC5BE0D215E85B8000AF209 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDC5BE00215E85B8000AF209 /* Miles */;
+			targetProxy = BDC5BE0C215E85B8000AF209 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BDC5BE13215E85B8000AF209 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BDC5BE14215E85B8000AF209 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BDC5BE16215E85B8000AF209 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z7R62JH5A8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Miles/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braysoft.Miles;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BDC5BE17215E85B8000AF209 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z7R62JH5A8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Miles/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braysoft.Miles;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BDC5BE19215E85B8000AF209 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7R62JH5A8;
+				INFOPLIST_FILE = MilesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braysoft.MilesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BDC5BE1A215E85B8000AF209 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7R62JH5A8;
+				INFOPLIST_FILE = MilesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.braysoft.MilesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDC5BDFB215E85B8000AF209 /* Build configuration list for PBXProject "Miles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC5BE13215E85B8000AF209 /* Debug */,
+				BDC5BE14215E85B8000AF209 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDC5BE15215E85B8000AF209 /* Build configuration list for PBXNativeTarget "Miles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC5BE16215E85B8000AF209 /* Debug */,
+				BDC5BE17215E85B8000AF209 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDC5BE18215E85B8000AF209 /* Build configuration list for PBXNativeTarget "MilesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC5BE19215E85B8000AF209 /* Debug */,
+				BDC5BE1A215E85B8000AF209 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDC5BDF8215E85B8000AF209 /* Project object */;
+}

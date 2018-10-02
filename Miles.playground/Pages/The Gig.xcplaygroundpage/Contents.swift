@@ -1,4 +1,5 @@
 //: ![The last page with the logo, I swear.](miles_logo.pdf)
+//: ## [Previous](@previous)
 /*:
  ## Ready for the improv?
  
@@ -16,13 +17,17 @@
  Each instrument has its own `Improviser` that creates **MIDI** notes on the spot, like just a real musician does. Improvisers in charge of creating notes, chords, basslines and drum beats that work with each other.
  
  */
-let drums = Drums(withParts: [.ride, .hihats, .snare, .bass], draws: false)
-let bass = Bass(volume: 1, draws: true)
-let piano = Piano(for: .comping, volume: 0.8, draws: true)
-let pianoSoloer = Piano(for: .soloing, volume: 0.6, draws: true)
+import AVFoundation
+import Miles
+
+let engine = AVAudioEngine()
+let drums = Drums(engine: engine, withParts: [.ride, .hihats, .snare, .bass], draws: false)
+let bass = Bass(engine: engine, volume: 1, draws: true)
+let piano = Piano(engine: engine, for: .comping, volume: 0.8, draws: true)
+let pianoSoloer = Piano(engine: engine, for: .soloing, volume: 0.6, draws: true)
 /*:
  ---
- ## Then, we decide which key the musicias will play in.
+ ## Then, we decide which key the musicians will play in.
  
  To do this, we create a `Harmonization` instance. A harmonization sets the key and type of scales we'll use to improvise.
  
@@ -44,7 +49,7 @@ let harmonization = Harmonization(key: .Eflat, type: .harmonicMinor)
  
  Cool, huh?
  */
-let sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [drums, bass, piano, pianoSoloer])
+let sequence = Sequence(engine: engine, harmonization: harmonization, tempo: 120, withInstruments: [drums, bass, piano, pianoSoloer])
 /*:
  ---
  ## Now, we create a canvas
@@ -55,7 +60,7 @@ let sequence = Sequence(harmonization: harmonization, tempo: 120, withInstrument
  Can you identify the instruments?
  * Experiment:
  Go back up and change the instrument's _draw_ property to make them draw or stop drawing to the canvas.
-
+ 
  */
 import PlaygroundSupport
 import SpriteKit
@@ -81,13 +86,13 @@ sequence.setDrawingCanvas(canvas)
  Try running Miles several times. The music will be different everytime!
  */
 sequence.createArrangement()
-sequence.startPlaying()
-/*: ### [Previous](@previous)
+sequence.start()
 
-
+/*:
  ---
  ## Acknowledgements
  
  * The sound fonts used to sample the instruments were downloaded from [RKhive](http://fox-gieg.com/rkhive/index.html), under a Creative Commons License.
  * I learned a lot about MIDI and AudioToolbox from Gene de Lisa's [blog](http://www.rockhoppertech.com/blog/). Kudos to him!
  */
+//: ## [Previous](@previous)
