@@ -10,10 +10,9 @@ import Foundation
 import AVFoundation
 import AudioToolbox
 
-/// This class encapsulates Apple's AVAudioUnitSampler and AVAudioSequencer in order to load MIDI soundbanks, and create and sequence MIDI events on CoreMIDI tracks and sequences.
-///
-/// The sampler audio unit can be configured by loading different types of instruments such as an .aupreset file, a DLS or SF2 sound bank. The output is a single stereo bus.
-
+/**
+ This class encapsulates Apple's AVAudioUnitSampler in order to load MIDI soundbank.
+ */
 public class Sampler {
     
     /// The volume of the Sampler when connected to the AVAUdioEngine
@@ -29,9 +28,14 @@ public class Sampler {
     private let engine: AVAudioEngine
     private let sampler: AVAudioUnitSampler = AVAudioUnitSampler()
     
-    /// Creates a new Sampler instance for the specified instrument voice.
-    ///
     /// - Parameter voice: The desired voice type.
+ 
+    /**
+     Creates a new Sampler instance for the specified instrument voice.
+ 
+     - parameter engine: the AVAudioEngine instance to use
+     - parameter voice: the desired voice type to use
+     */
     public init(engine: AVAudioEngine, for voice: InstrumentVoice) {
         self.engine = engine
 
@@ -54,6 +58,12 @@ public class Sampler {
         sampler.masterGain = 1.0
     }
 
+    /**
+     Associate a MIDI track with a sampler so that when the MIDI sequence begins playing,
+     the sampler will play the notes held by the given track.
+    
+     - parameter track: the track to play
+     */
     public func assign(track: AVMusicTrack) {
         track.destinationAudioUnit = sampler
     }

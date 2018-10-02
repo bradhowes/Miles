@@ -13,9 +13,7 @@ import AudioToolbox
  */
 public class ChordComper: Improviser {
 
-    public weak var delegate: ImproviserDelegate?
-
-    public func improviseNotes(toTrack track: MusicTrack, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
+    public func improviseNotes(toTrack track: Track, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
         let chord = harmony.chord
         let pattern = Rhythm.Comping.pattern
         return pattern.reduce(beat) { beat, block in
@@ -29,11 +27,7 @@ public class ChordComper: Improviser {
                 let count = Int.random(in: 2..<notes.count)
 
                 // Add the notes at the same time position and with the same duration
-                notes[0..<count].forEach { note in
-                    note.addToTrack(track, onBeat: beat, duration: dur.value)
-                    self.delegate?.addedNote(withMidiValue: note.midiValue, atBeat: beat, withDuration: dur.value)
-                }
-
+                notes[0..<count].forEach { track.add(note: $0, onBeat: beat, duration: dur) }
                 return beat + dur.value
 
             case .rest(let dur):

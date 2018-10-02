@@ -32,25 +32,28 @@ public class Guitar: Instrument {
         self.sampler.volume = volume
         self.draws = draws
         self.arranger = type == .rhythm ? ChordComper() : Soloer()
-        self.arranger.delegate = self
     }
 
     public func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression) {
-        sequencer.populate(sampler: sampler) { track in
+        sequencer.populate(instrument: self) { track in
             _ = progression.steps.reduce(MusicTimeStamp(0.0)) { beat, chordIndex in
                 return arranger.improviseNotes(toTrack: track, onBeat: beat, basedOn: (progression.harmonization, progression.harmonization.chords[chordIndex]))
             }
         }
     }
 
-    // MARK: - ImproviserDelegate
-    public func addedNote(withMidiValue: Int, atBeat beat: Double, withDuration duration: Double) {
+    public func play(beat: MusicTimeStamp, note: Note, duration: Duration) -> MIDINoteMessage {
         if draws {
             if Bool.random() {
-                canvas?.drawCircle(withSizeMiultiplier: 9, delay: beat, lifespan: duration)
-        } else {
-                canvas?.drawBlock(withSizeMiultiplier: 2, delay: beat, lifespan: duration)
+                canvas?.drawCircle(withSizeMiultiplier: 9, delay: beat, lifespan: duration.value)
+            } else {
+                canvas?.drawBlock(withSizeMiultiplier: 2, delay: beat, lifespan: duration.value)
             }
         }
+        return MIDINoteMessage(channel: 0,
+                               note: UInt8(note.midiValue),
+                               velocity: UInt8(Int.random(in: 40...70)),
+                               releaseVelocity: UInt8(0),
+                               duration: Float(duration.value / 4.0))
     }
 }

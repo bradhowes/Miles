@@ -10,6 +10,7 @@
 		BD502EE12162C74C0096CBED /* WiringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD502EE02162C74C0096CBED /* WiringTests.swift */; };
 		BD69986A2163D30D00A48753 /* Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6998692163D30D00A48753 /* Guitar.swift */; };
 		BD69986E2163D83800A48753 /* GeneralUser.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = BD69986D2163D83800A48753 /* GeneralUser.sf2 */; };
+		BD6998702163F1D300A48753 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD69986F2163F1D300A48753 /* Track.swift */; };
 		BD9DB05C2161FA06009E51AE /* Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9DB05B2161FA06009E51AE /* Sequencer.swift */; };
 		BDC5BE0B215E85B8000AF209 /* Miles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC5BE01215E85B8000AF209 /* Miles.framework */; };
 		BDC5BE10215E85B8000AF209 /* MilesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC5BE0F215E85B8000AF209 /* MilesTests.swift */; };
@@ -64,6 +65,7 @@
 		BD502EE02162C74C0096CBED /* WiringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiringTests.swift; sourceTree = "<group>"; };
 		BD6998692163D30D00A48753 /* Guitar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guitar.swift; sourceTree = "<group>"; };
 		BD69986D2163D83800A48753 /* GeneralUser.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = GeneralUser.sf2; sourceTree = "<group>"; };
+		BD69986F2163F1D300A48753 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		BD9DB05B2161FA06009E51AE /* Sequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequencer.swift; sourceTree = "<group>"; };
 		BDC5BE01215E85B8000AF209 /* Miles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Miles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC5BE04215E85B8000AF209 /* Miles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Miles.h; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				BDC5BE21215E86A3000AF209 /* PianoTeacher.swift */,
 				BDC5BE24215E86A3000AF209 /* Sampler.swift */,
 				BD9DB05B2161FA06009E51AE /* Sequencer.swift */,
+				BD69986F2163F1D300A48753 /* Track.swift */,
 			);
 			path = Instrument;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				BDC5BE55215E86A3000AF209 /* Drawable.swift in Sources */,
 				BDC5BE5D215E86A3000AF209 /* Improviser.swift in Sources */,
 				BDC5BE4E215E86A3000AF209 /* Tone.swift in Sources */,
+				BD6998702163F1D300A48753 /* Track.swift in Sources */,
 				BDC5BE54215E86A3000AF209 /* MilesCanvas.swift in Sources */,
 				BDC5BE4B215E86A3000AF209 /* Piano.swift in Sources */,
 			);

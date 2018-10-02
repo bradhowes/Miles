@@ -27,11 +27,10 @@ public class Drums: Instrument {
         self.arranger = DrumSwinger(withParts: parts)
         self.sampler.volume = volume
         self.draws = draws
-        arranger.delegate = self
     }
 
     public func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression) {
-        sequencer.populate(sampler: sampler) { track in
+        sequencer.populate(instrument: self) { track in
             _ = progression.steps.reduce(MusicTimeStamp(0.0)) { beat, _ in //The chord does not matter here.
                 return self.arranger.improviseNotes(toTrack: track, onBeat: beat,
                     basedOn: (progression.harmonization, progression.harmonization.chords.randomElement()!))
@@ -39,9 +38,14 @@ public class Drums: Instrument {
         }
     }
 
-    public func addedNote(withMidiValue midiValue: Int, atBeat beat: Double, withDuration lifespan: Double) {
-        if draws && midiValue == 51 {
-            canvas?.drawCymbalCircle(delay: beat, lifespan: lifespan)
+    public func play(beat: MusicTimeStamp, note: Note, duration: Duration) -> MIDINoteMessage {
+        if draws && note.midiValue == 51 {
+            canvas?.drawCymbalCircle(delay: beat, lifespan: duration.value)
         }
+        return MIDINoteMessage(channel: 0,
+                               note: UInt8(note.midiValue),
+                               velocity: UInt8(Int.random(in: 40...70)),
+                               releaseVelocity: UInt8(0),
+                               duration: Float(duration.value))
     }
 }

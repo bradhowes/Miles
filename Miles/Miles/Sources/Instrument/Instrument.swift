@@ -64,7 +64,8 @@ public enum InstrumentVoice: String {
     }
 }
 
-public protocol Instrument: ImproviserDelegate, Drawable {
+public protocol Instrument: class, Drawable {
+
     var sampler: Sampler { get }
     var canvas: MilesCanvas? { get set }
 
@@ -76,4 +77,6 @@ public protocol Instrument: ImproviserDelegate, Drawable {
     ///     **Porgression** = (harmonization: `Harmonization`, steps: `[Int]` )
     ///   - tempo: The tempo *(in beats per minute)* that the music will have.
     func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression)
+
+    func play(beat: MusicTimeStamp, note: Note, duration: Duration) -> MIDINoteMessage
 }

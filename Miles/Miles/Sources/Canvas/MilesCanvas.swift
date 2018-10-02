@@ -11,7 +11,7 @@ import SpriteKit
 /// MilesCanvas is a sublass of `SKScene` used to render a visual representation of the notes played by Miles. 
 open class MilesCanvas: SKScene {
     private let bundle = Bundle(for: MilesCanvas.self)
-
+    
     public enum DrawableNoteType {
         case block
         case circle(size: CGFloat)
@@ -24,13 +24,13 @@ open class MilesCanvas: SKScene {
     open var tempo: Double = 120
     
     private let commonFadeTime: Double = 1.2
-
+    
     private func makeNode(named: String) -> SKSpriteNode {
         let path = bundle.path(forResource: name, ofType: "png")
         let image = UIImage(named: path!, in: bundle, compatibleWith: nil)
         return SKSpriteNode(texture: SKTexture(image: image!))
     }
-
+    
     //Initial setup
     open override func didMove(to view: SKView) {
         backgroundColor = colorPalette.background
@@ -44,15 +44,15 @@ open class MilesCanvas: SKScene {
         let circle = makeNode(named: "circle")
         
         //Size
-        let newSize = boring ? 60 : 25 * random(min: 1, max: multiplier)
+        let newSize = boring ? 60 : 25 * CGFloat.random(in: 1...multiplier)
         circle.size = CGSize(width: newSize, height: newSize)
         
         //Position
         let heightAdjust = circle.size.height / 2
         let widthAdjust = circle.size.width / 2
         
-        let randomY = self.random(min: (self.size.height * 0.05) + heightAdjust, max: (self.size.height * 0.9) - heightAdjust)
-        let randomX = self.random(min: (self.size.width * 0.05) + widthAdjust, max: (self.size.width * 0.9) - widthAdjust)
+        let randomY = CGFloat.random(in: ((self.size.height * 0.05) + heightAdjust)...((self.size.height * 0.9) - heightAdjust))
+        let randomX = CGFloat.random(in: ((self.size.width * 0.05) + widthAdjust)...((self.size.width * 0.9) - widthAdjust))
         circle.position = CGPoint(x: randomX, y: boring ? size.height / 2 : randomY)
         
         //Color
@@ -78,21 +78,21 @@ open class MilesCanvas: SKScene {
         
         let name = "block\(Int.random(in: 1...3))"
         let block = makeNode(named: name)
-
+        
         //Size
-        block.size.height *= boring ? 0.5 : random(min: 0.5, max: multiplier)
-        block.size.width *= boring ? 0.5 : random(min: 0.5, max: multiplier)
+        block.size.height *= boring ? 0.5 : CGFloat.random(in: 0.5...multiplier)
+        block.size.width *= boring ? 0.5 : CGFloat.random(in: 0.5...multiplier)
         
         //Rotation
-        let rotation: CGFloat = (CGFloat(Int.random(in: 0...4)) * 90) + random(min: 0, max: 3)
+        let rotation: CGFloat = (CGFloat(Int.random(in: 0...4)) * 90) + CGFloat.random(in: 0...3)
         block.zRotation = boring ? 0 : rotation * CGFloat.pi / 180
         
         //Position
         let heightAdjust = block.size.height / 2
         let widthAdjust = block.size.width / 2
         
-        let randomY = self.random(min: (self.size.height * 0.05) + heightAdjust, max: (self.size.height * 0.9) - heightAdjust)
-        let randomX = self.random(min: (self.size.width * 0.05) + widthAdjust, max: (self.size.width * 0.9) - widthAdjust)
+        let randomY = CGFloat.random(in: ((self.size.height * 0.05) + heightAdjust)...((self.size.height * 0.9) - heightAdjust))
+        let randomX = CGFloat.random(in: ((self.size.width * 0.05) + widthAdjust)...((self.size.width * 0.9) - widthAdjust))
         block.position = CGPoint(x: randomX, y: boring ? size.height / 2 : randomY)
         
         //Color
@@ -156,7 +156,7 @@ open class MilesCanvas: SKScene {
         let heightAdjust = circle.size.height / 2
         let widthAdjust = circle.size.width / 2
         
-        circle.position = CGPoint(x: (size.width * 0.1 ) + widthAdjust, y:(size.height * 0.1 ) + heightAdjust + random(min: -5, max: 5))
+        circle.position = CGPoint(x: (size.width * 0.1 ) + widthAdjust, y:(size.height * 0.1 ) + heightAdjust + CGFloat.random(in: -5...5))
         
         //Color
         circle.color = colorPalette.colors.randomElement()!
@@ -174,14 +174,4 @@ open class MilesCanvas: SKScene {
     private func convertToTempo(_ delay: Double) -> Double {
         return delay * 60 / self.tempo
     }
-    
-    private func random() -> CGFloat {
-        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-    }
-    
-    private func random(min: CGFloat, max: CGFloat) -> CGFloat {
-        return random() * (max - min) + min
-    }
-    
-    
 }

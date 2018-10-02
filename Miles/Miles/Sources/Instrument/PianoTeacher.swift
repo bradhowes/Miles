@@ -14,17 +14,17 @@ open class PianoTeacher: Drawable {
     private let durations: [Duration] = [.half(dotted: false), .quarter(dotted: false), .eighth(dotted: false)]
     private let engine: AVAudioEngine
     private let sequencer: Sequencer
-    private let sampler: Sampler
+    private let instrument: Instrument
 
     open var canvas: MilesCanvas?
     open var draws: Bool
 
     public init(draws: Bool = true, withTempo tempo: Double) {
         self.engine = AVAudioEngine()
-        self.sampler = Sampler(engine: engine, for: .piano)
+        self.instrument = Piano(engine: engine, for: .comping, volume: 1.0, draws: draws)
+        self.sequencer = Sequencer(engine: engine, withTempo: tempo)
         try? engine.start()
         self.draws = draws
-        self.sequencer = Sequencer(engine: engine, withTempo: tempo)
     }
 
     /// Allows the PianoTeacher to show how a scale *feels*. Plays the notes of the scale specified in the key specified.
@@ -37,11 +37,11 @@ open class PianoTeacher: Drawable {
     ///   - useStaticTime: A Boolean value indicating wether or not all notes should have the same duration.
     open func play(scale: Scale, inKey key: Tone, inOctaves octaves: [Int], useStaticTime: Bool) {
         canvas?.tempo = sequencer.tempo
-        sequencer.populate(sampler: sampler) { track in
+        sequencer.populate(instrument: instrument) { track in
             octaves.forEach { octave in
                 _ = notesForScale(scale: scale, key: key, atOctave: octave).reduce(MusicTimeStamp(0.0)) { beat, note in
                     let dur: Duration = useStaticTime ? .quarter(dotted: false) : durations.randomElement()!
-                    note.addToTrack(track, onBeat: beat, duration: dur.value)
+                    track.add(note: note, onBeat: beat, duration: dur)
                     canvas?.drawCircle(withSizeMiultiplier: 6, boring: useStaticTime, fades: true, delay: beat, lifespan: dur.value)
                     return beat + dur.value
                 }
@@ -62,12 +62,12 @@ open class PianoTeacher: Drawable {
     ///   - arpeggiated: A boolean value indicating wether or not the notes in the chord should be arpeggiated.
     open func playChordsIn(harmonization: Harmonization, atOctave octave: Int, arpeggiated: Bool) {
         canvas?.tempo = sequencer.tempo
-        sequencer.populate(sampler: sampler) { track in
+        sequencer.populate(instrument: instrument) { track in
             _ = harmonization.chords.reduce(MusicTimeStamp(0.0)) { beat, chord in
                 _ = chord.notes(atOctave: octave).reduce(MusicTimeStamp(0.0)) { internalBeat, note in
                     let realBeat = beat + internalBeat
                     let dur = Duration.half(dotted: false)
-                    note.addToTrack(track, onBeat: realBeat, duration: dur.value)
+                    track.add(note: note, onBeat: realBeat, duration: dur)
                     canvas?.drawCircle(withSizeMiultiplier: 6, fades: true, delay: realBeat, lifespan: dur.value)
                     return internalBeat + (arpeggiated ? 0.2 : 0.0)
                 }

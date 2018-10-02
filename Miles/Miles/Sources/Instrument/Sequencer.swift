@@ -11,12 +11,19 @@ import Foundation
 import AVFoundation
 import AudioToolbox
 
+/**
+ A Sequencer holds one or more Track objects that define the notes that instruments will play.
+ */
 public class Sequencer {
 
+    /// Internal AVAudioSequencer that manages the tracks
     private var sequencer: AVAudioSequencer
+    /// Internal MusicSequence object that holds MusicTrack objects
     private var sequence: MusicSequence
-    private var samplers: [Sampler] = []
+    /// Collection of Track objects that have been added and populated with notes
+    private var tracks: [Track] = []
 
+    /// Obtain a reference to the raw track data
     private var data: Data {
         get {
             var status = OSStatus(noErr)
@@ -36,9 +43,17 @@ public class Sequencer {
         }
     }
     
+    /// The tempo of the sequence that will play
     public let tempo: Double
+    /// The overall duration of the sequence
     public private(set) var duration: TimeInterval = 0.0
 
+    /**
+     Create a new Sequencer instance.
+    
+     - parameter engine: the AVAudioEngine instance to connect to
+     - parameter tempo: the tempo (BPM) of the music to play
+     */
     public init(engine: AVAudioEngine, withTempo tempo: Double) {
         self.sequencer = AVAudioSequencer(audioEngine: engine)
 
@@ -63,60 +78,48 @@ public class Sequencer {
             fatalError("failed MusicTrackNewExtendedTempoEvent - \(status)")
         }
     }
+
+    /**
+     Create a new Track and fill it with notes for a given instrument to play. The notes
+     come from an arranger.
     
-    private func initializeMIDI(_ track: MusicTrack) {
-        // Is all of this necessary? Perhaps if there is an external MIDI device connected to the network.
-        // Bank select msb
-        var chanmess = MIDIChannelMessage(status: 0xB0, data1: 0, data2: 0, reserved: 0) //MIDI Channel Message for status 176
-        var status = MusicTrackNewMIDIChannelEvent(track, 0, &chanmess)
-        if status != OSStatus(noErr) {
-            print("creating bank select event \(status)")
-        }
-        
-        // Bank select lsb
-        chanmess = MIDIChannelMessage(status: 0xB0, data1: 32, data2: 0, reserved: 0)// MIDI Channel Message for status 176 / Data byte 1: 32-63 LSB of 0-31
-        status = MusicTrackNewMIDIChannelEvent(track, 0, &chanmess)
-        if status != OSStatus(noErr) {
-            print("creating bank select event \(status)")
-        }
-        
-        // program change. first data byte is the patch, the second data byte is unused for program change messages. Status 192: Command value for Program Change message (https://docs.oracle.com/javase/7/docs/api/javax/sound/midi/ShortMessage.html#PROGRAM_CHANGE)
-        chanmess = MIDIChannelMessage(status: 0xC0, data1: 0, data2: 0, reserved: 0)
-        status = MusicTrackNewMIDIChannelEvent(track, 0, &chanmess)
-        if status != OSStatus(noErr) {
-            print("creating program change event \(status)")
-        }
-    }
-
-    public func populate(sampler: Sampler, withArrangement arrange: (MusicTrack) -> Void) {
-        var mt: MusicTrack?
-        let status = MusicSequenceNewTrack(sequence, &mt)
-        if status != noErr {
-            fatalError("failed MusicSequenceNewTrack - \(status)")
-        }
-
-        samplers.append(sampler)
-        initializeMIDI(mt!)
-        arrange(mt!)
+     - parameter instrument: the instrument that will play the notes
+     - parameter arrange: the note generator
+     */
+    public func populate(instrument: Instrument, withArrangement arrange: (Track) -> Void) {
+        let track = Track(sequence: sequence, instrument: instrument)
+        tracks.append(track)
+        arrange(track)
     }
     
+    /**
+     Complete the MIDI note generating process and make ready to play the sequence
+     */
     public func complete() {
         try! sequencer.load(from: data)
         sequencer.prepareToPlay()
-        zip(samplers, sequencer.tracks).forEach { $0.0.assign(track: $0.1) }
+        zip(tracks, sequencer.tracks).forEach { $0.0.instrument.sampler.assign(track: $0.1) }
         duration = sequencer.tracks.map { $0.lengthInSeconds }.max()!
         sequencer.prepareToPlay()
     }
     
+    /**
+     Start playback of the recoded MIDI notes.
+     */
     public func start() {
         sequencer.currentPositionInBeats = TimeInterval(0)
         try! sequencer.start()
     }
 
+    /**
+     Stop playback of the recorded MIDI notes.
+     */
     public func stop() {
         sequencer.stop()
     }
-    
+
+    /// Determine if the sequencer is playing. If the play position is past the recorded duration,
+    /// stop the playback.
     public var isPlaying: Bool {
         print("\(sequencer.isPlaying) - \(sequencer.currentPositionInSeconds)")
         if sequencer.isPlaying && sequencer.currentPositionInSeconds >= duration {

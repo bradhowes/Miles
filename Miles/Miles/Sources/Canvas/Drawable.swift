@@ -9,9 +9,6 @@
 import SpriteKit
 
 public protocol Drawable {
-  
-  var canvas: MilesCanvas? { get set }
-  
-  var draws: Bool { get }
-  
+    var canvas: MilesCanvas? { get set }
+    var draws: Bool { get }
 }

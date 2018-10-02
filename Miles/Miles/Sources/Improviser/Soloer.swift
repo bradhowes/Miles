@@ -12,8 +12,6 @@ import AudioToolbox
 public class Soloer: Improviser {
     private let durations: [Duration] = [.half(dotted: false), .quarter(dotted: false), .eighth(dotted: false)]
 
-    public weak var delegate: ImproviserDelegate?
-
     public typealias ScaleRange = (min: Int, max: Int)
     public let scaleRange: ScaleRange
     public let canOverlapNotes: Bool
@@ -23,7 +21,7 @@ public class Soloer: Improviser {
         self.canOverlapNotes = canOverlapNotes
     }
     
-    public func improviseNotes(toTrack track: MusicTrack, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
+    public func improviseNotes(toTrack track: Track, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
         var internalBeat = MusicTimeStamp(0.0)
         let availableScales = harmony.chord.quality.improvScales + [harmony.harmonization.scale]
         let improvScale = availableScales.randomElement()!
@@ -36,8 +34,8 @@ public class Soloer: Improviser {
                 let realBeat = beat + internalBeat
                 let note = Note(tone: improvScale.tones(forKey: harmony.harmonization.key).randomElement()!,
                                 octave: Int.random(in: scaleRange.min...scaleRange.max))
-                note.addToTrack(track, onBeat: realBeat, duration: duration.value, velocity: Int.random(in: 40...60))
-                self.delegate?.addedNote(withMidiValue: note.midiValue, atBeat: realBeat, withDuration: duration.value)
+                track.add(note: note, onBeat: realBeat, duration: duration)
+
                 //If overlapping notes is permitted, advances a random duration, if not, advances the note's duration.
                 internalBeat += (canOverlapNotes ? durations.randomElement()! : duration).value
             } else {

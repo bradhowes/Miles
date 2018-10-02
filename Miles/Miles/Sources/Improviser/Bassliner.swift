@@ -16,9 +16,7 @@ import AudioToolbox
  */
 public class Bassliner: Improviser {
 
-    public weak var delegate: ImproviserDelegate?
-
-    public func improviseNotes(toTrack track: MusicTrack, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
+    public func improviseNotes(toTrack track: Track, onBeat beat: MusicTimeStamp, basedOn harmony: Improviser.Harmony) -> MusicTimeStamp {
         let pattern = Rhythm.Bassline.pattern.enumerated()
         return pattern.reduce(beat) { beat, part in
             switch part.element {
@@ -31,8 +29,8 @@ public class Bassliner: Improviser {
                     default: return notes.randomElement()!
                     }
                 }()
-                note.addToTrack(track, onBeat: beat, duration: dur.value)
-                self.delegate?.addedNote(withMidiValue: note.midiValue, atBeat: beat, withDuration: dur.value)
+                
+                track.add(note: note, onBeat: beat, duration: dur)
                 return beat + dur.value
 
             case .rest(let dur):
