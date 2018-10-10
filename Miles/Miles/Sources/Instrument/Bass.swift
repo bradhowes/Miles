@@ -50,7 +50,7 @@ public class Bass: Instrument {
     }
 
     /**
-     Generate and return a MIDINoteMessage
+     Generate and return a MIDINoteMessage that can be added to a Track/MusicTrack for this instrument.
     
      - parameter beat: when to play the note
      - parameter note: what note to play

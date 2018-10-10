@@ -42,6 +42,7 @@ public class Track {
      Add some MIDI channel messages to the new MusicTrack.
      */
     private func initializeMIDI() {
+
         // Is all of this necessary? Perhaps if there is an external MIDI device connected to the network.
         // Bank select msb
         var chanmess = MIDIChannelMessage(status: 0xB0, data1: 0, data2: 0, reserved: 0) //MIDI Channel Message for status 176
@@ -51,7 +52,7 @@ public class Track {
         }
         
         // Bank select lsb
-        chanmess = MIDIChannelMessage(status: 0xB0, data1: 32, data2: 0, reserved: 0)// MIDI Channel Message for status 176 / Data byte 1: 32-63 LSB of 0-31
+        chanmess = MIDIChannelMessage(status: 0xB0, data1: 32, data2: 0, reserved: 0) // MIDI Channel Message for status 176 / Data byte 1: 32-63 LSB of 0-31
         status = MusicTrackNewMIDIChannelEvent(track, 0, &chanmess)
         if status != OSStatus(noErr) {
             print("creating bank select event \(status)")

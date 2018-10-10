@@ -78,5 +78,16 @@ public protocol Instrument: class, Drawable {
     ///   - tempo: The tempo *(in beats per minute)* that the music will have.
     func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression)
 
+    /**
+     Generate and return a MIDINoteMessage that can be added to a Track/MusicTrack for this instrument.
+     Note that the instrument can modify and/or ignore any of the values. These are only suggestions
+     provided by an Improviser. That said, the `note` value probably should remain the same, and the
+     `beat` value should only deviate slightly if at all.
+
+     - parameter beat: when to play the note
+     - parameter note: what note to play
+     - parameter duration: how long to play the note
+     - returns: new MIDINoteMessage instance
+     */
     func play(beat: MusicTimeStamp, note: Note, duration: Duration) -> MIDINoteMessage
 }

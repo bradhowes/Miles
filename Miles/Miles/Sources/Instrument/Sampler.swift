@@ -26,7 +26,7 @@ public class Sampler {
     }
 
     private let engine: AVAudioEngine
-    private let sampler: AVAudioUnitSampler = AVAudioUnitSampler()
+    public let sampler: AVAudioUnitSampler = AVAudioUnitSampler()
     
     /// - Parameter voice: The desired voice type.
  
