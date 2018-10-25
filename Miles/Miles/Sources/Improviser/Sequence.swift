@@ -70,7 +70,7 @@ public class Sequence {
     
     /// Creates the arrangement using the instrument's indiviual algorithms.
     public func createArrangement() {
-        instruments.forEach{ $0.createArrangementFor(sequencer: sequencer, progression: (harmonization, progressionSteps)) }
+        instruments.forEach{ $0.createArrangement(sequencer: sequencer, progression: (harmonization, progressionSteps)) }
         sequencer.complete()
     }
     

@@ -29,7 +29,7 @@ public class Drums: Instrument {
         self.draws = draws
     }
 
-    public func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression) {
+    public func createArrangement(sequencer: Sequencer, progression: Sequence.Progression) {
         sequencer.populate(instrument: self) { track in
             _ = progression.steps.reduce(MusicTimeStamp(0.0)) { beat, _ in //The chord does not matter here.
                 return self.arranger.improviseNotes(toTrack: track, onBeat: beat,

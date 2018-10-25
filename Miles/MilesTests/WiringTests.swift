@@ -49,7 +49,7 @@ class WiringTests: XCTestCase {
 
         // Play a major chords
         //
-        let sampler = instrument.sampler.sampler
+        let sampler = instrument.sampler.ausampler
         sampler.startNote(48, withVelocity: 80, onChannel: 0)
         sampler.startNote(52, withVelocity: 80, onChannel: 0)
         sampler.startNote(55, withVelocity: 80, onChannel: 0)

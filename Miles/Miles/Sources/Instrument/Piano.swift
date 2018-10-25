@@ -38,7 +38,7 @@ public class Piano: Instrument {
         self.arranger = type == .comping ? ChordComper() : Soloer()
     }
 
-    public func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression) {
+    public func createArrangement(sequencer: Sequencer, progression: Sequence.Progression) {
         sequencer.populate(instrument: self) { track in
             _ = progression.steps.reduce(MusicTimeStamp(0.0)) { beat, chordIndex in
                 return arranger.improviseNotes(toTrack: track, onBeat: beat, basedOn: (progression.harmonization, progression.harmonization.chords[chordIndex]))
@@ -47,7 +47,6 @@ public class Piano: Instrument {
     }
 
     public func play(beat: MusicTimeStamp, note: Note, duration: Duration) -> MIDINoteMessage {
-
         if draws {
             if Bool.random() {
                 canvas?.drawCircle(withSizeMiultiplier: 9, delay: beat, lifespan: duration.value)

@@ -39,7 +39,7 @@ public class Bass: Instrument {
      - parameter sequencer: the Sequencer to use for holding Track data
      - parameter progression: the note generator to use
      */
-    public func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression) {
+    public func createArrangement(sequencer: Sequencer, progression: Sequence.Progression) {
         sequencer.populate(instrument: self) { track in
             _ = progression.steps.reduce(MusicTimeStamp(0.0)) { beat, chordIndex in
                 print("beat; \(beat)  chordIndex: \(chordIndex)")
@@ -58,7 +58,6 @@ public class Bass: Instrument {
      - returns: new MIDINoteMessage instance
      */
     public func play(beat: MusicTimeStamp, note: Note, duration: Duration) -> MIDINoteMessage {
-
         if draws {
             canvas?.drawString(delay: beat, lifespan: duration.value)
         }

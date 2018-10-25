@@ -8,75 +8,26 @@
 
 import AVFoundation
 
-/// An enum representing the different types an instrument can have. 
-public enum InstrumentVoice: String {
-
-    case bass = "bass"
-    case drums = "drums"
-    case guitar = "GeneralUser"
-    case piano = "piano"
-    case sax = "sax"
-    case trumpet = "trumpet"
-
-    /**
-     There are two types of MIDI banks in the General MIDI standard: melody and percussion
-     */
-    public enum MidiBankType  {
-        case melody
-        case percussion
-
-        /// Obtain the most-significant byte of the bank for the program/voice
-        public var bankMSB: Int {
-            switch self {
-            case .percussion: return kAUSampler_DefaultPercussionBankMSB
-            default: return kAUSampler_DefaultMelodicBankMSB
-            }
-        }
-
-        /// Obtain the least-significant byte of the bank for the program/voice
-        public var bankLSB: Int {
-            return kAUSampler_DefaultBankLSB
-        }
-    }
-
-    /// Obtain the MIDI bank type for the voice
-    public var midiBankType: MidiBankType {
-        switch self {
-        case .drums: return .percussion
-        default: return .melody
-        }
-    }
-
-    /// Obtain the program to select when performing
-    public var program: Int {
-        switch self {
-        case .guitar: return 26
-        default: return 0
-        }
-    }
-
-    public var bankMSB: Int {
-        return midiBankType.bankMSB
-    }
-
-    public var bankLSB: Int {
-        return midiBankType.bankLSB
-    }
-}
-
+/**
+ Interface for all instruments. An instrument has a particular sound which comes from a
+ Sampler instance. When creating a new performance via `createArrangement` method, the instrument
+ will rely on a Sequence.Progression configuration that will generate the notes to play, but the
+ Instrument will control the actual peformance characteristics of the notes via its `play` method.
+ */
 public protocol Instrument: class, Drawable {
 
+    /// The source of the sounds for this instrument
     var sampler: Sampler { get }
+    /// The canvas to draw in while playing notes
     var canvas: MilesCanvas? { get set }
 
-    /// Uses the instrument's algorithm to create a music sequence based on the specified harmonization, chords and instrument type.
-    ///
-    /// - Parameters:
-    ///   - progression: A tuple with the most important info about the sequence.
-    ///
-    ///     **Porgression** = (harmonization: `Harmonization`, steps: `[Int]` )
-    ///   - tempo: The tempo *(in beats per minute)* that the music will have.
-    func createArrangementFor(sequencer: Sequencer, progression: Sequence.Progression)
+    /**
+     Uses the instrument's algorithm to create a music sequence based on the specified harmonization, chords and instrument type.
+
+     - parameter sequencer: where to record the MIDI notes
+     - parameter progression: A tuple with the most important info about the sequence - (harmonization: `Harmonization`, steps: `[Int]`)
+     */
+    func createArrangement(sequencer: Sequencer, progression: Sequence.Progression)
 
     /**
      Generate and return a MIDINoteMessage that can be added to a Track/MusicTrack for this instrument.

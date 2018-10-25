@@ -1,5 +1,5 @@
 //: ![The last page with the logo, I swear.](miles_logo.pdf)
-//: ## [Previous](@previous)
+//: ## [Previous](@previous) | [Next](@next)
 /*:
  ## Ready for the improv?
  
@@ -95,4 +95,4 @@ sequence.start()
  * The sound fonts used to sample the instruments were downloaded from [RKhive](http://fox-gieg.com/rkhive/index.html), under a Creative Commons License.
  * I learned a lot about MIDI and AudioToolbox from Gene de Lisa's [blog](http://www.rockhoppertech.com/blog/). Kudos to him!
  */
-//: ## [Previous](@previous)
+//: ## [Previous](@previous) | [Next](@next)

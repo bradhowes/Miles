@@ -93,12 +93,12 @@ public class Sequencer {
     }
     
     /**
-     Complete the MIDI note generating process and make ready to play the sequence
+     Complete the MIDI note generating process by creating AVAudioSequencer tracks from the MIDI data collected
+     so far, and for each track, link it to an AVAudioUnitSampler from an Instrument.
      */
     public func complete() {
         try! sequencer.load(from: data)
-        sequencer.prepareToPlay()
-        zip(tracks, sequencer.tracks).forEach { $0.0.instrument.sampler.assign(track: $0.1) }
+        zip(sequencer.tracks, tracks).forEach { $0.0.destinationAudioUnit = $0.1.instrument.sampler.ausampler; }
         duration = sequencer.tracks.map { $0.lengthInSeconds }.max()!
         sequencer.prepareToPlay()
     }
